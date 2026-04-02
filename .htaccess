@@ -1,0 +1,7 @@
+PassengerEnabled on
+PassengerAppRoot /home/u908451270/domains/mcp.avvokado.ch/public_html
+PassengerAppType node
+PassengerNodejs /opt/alt/alt-nodejs22/root/bin/node
+PassengerStartupFile index.js
+PassengerBaseURI /
+RewriteRule ^\.builds - [F,L]

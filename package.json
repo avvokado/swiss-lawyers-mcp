@@ -11,7 +11,7 @@
     "build": "tsc -p tsconfig.json",
     "dev": "tsx watch src/server/http.ts",
     "dev:stdio": "tsx src/server/stdio.ts",
-    "start": "node dist/src/server/http.js",
+    "start": "node index.js",
     "start:stdio": "node dist/src/server/stdio.js",
     "test": "npm run build && node dist/scripts/run-tests.js",
     "smoke:http": "npm run build && node dist/scripts/http-smoke.js"
