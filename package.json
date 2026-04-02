@@ -1,0 +1,37 @@
+{
+  "name": "swiss-lawyers-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "swiss-lawyers-mcp by avvokado.ch",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch src/server/http.ts",
+    "dev:stdio": "tsx src/server/stdio.ts",
+    "start": "node dist/src/server/http.js",
+    "start:stdio": "node dist/src/server/stdio.js",
+    "test": "npm run build && node dist/scripts/run-tests.js",
+    "smoke:http": "npm run build && node dist/scripts/http-smoke.js"
+  },
+  "keywords": [
+    "mcp",
+    "lawyers",
+    "switzerland",
+    "avvokado"
+  ],
+  "author": "avvokado.ch",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "dotenv": "17.4.0",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "25.5.0",
+    "tsx": "4.21.0",
+    "typescript": "6.0.2"
+  }
+}
