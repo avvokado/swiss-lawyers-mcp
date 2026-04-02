@@ -2,6 +2,9 @@
 
 Minimal deployment target for `swiss-lawyers-mcp by avvokado.ch`.
 
+Public distribution repo:
+- `https://github.com/avvokado/swiss-lawyers-mcp`
+
 Target host:
 - `mcp.avvokado.ch`
 

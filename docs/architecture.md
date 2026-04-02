@@ -12,6 +12,11 @@ Das MVP fokussiert auf:
 
 Der Server ist absichtlich kein Monolith fuer das bestehende Verzeichnis, sondern ein separates Produkt-Repo mit einer klaren fachlichen Oberflaeche.
 
+Repo-Einordnung:
+- `swiss-lawyers-mcp` ist das oeffentliche Produkt-Repo.
+- Das bestehende Avvokado-Quellsystem und spaetere interne Live-Provider bleiben privat.
+- Das oeffentliche Repo ist fuer Distribution, Integrationen, MCP-Vertraege und die leichtgewichtige Referenzimplementierung gedacht.
+
 ## Warum diese Struktur
 
 Die Struktur trennt vier Dinge sauber, ohne komplex zu werden:

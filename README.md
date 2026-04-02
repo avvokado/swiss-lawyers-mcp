@@ -2,6 +2,9 @@
 
 Ein leichtgewichtiges, oeffentlich ausrichtbares MCP-MVP fuer die Discovery von Anwaeltinnen und Anwaelten in der Schweiz.
 
+Oeffentliches Produkt-Repo:
+- `https://github.com/avvokado/swiss-lawyers-mcp`
+
 Das Projekt ist bewusst AI-first gedacht:
 - ein Haupttool fuer Discovery
 - ein Detailtool fuer Profile
@@ -9,7 +12,9 @@ Das Projekt ist bewusst AI-first gedacht:
 - Seed-Daten statt Live-Anbindung
 - saubere Trennung fuer spaetere echte Provider, API- und Partner-Erweiterungen
 
-Wichtig: Dieses Repo ist absichtlich vollstaendig getrennt vom bestehenden Verzeichnis- und Source-System unter `C:\claude-local\avvokado.ch`.
+Wichtig:
+- Das oeffentliche MCP-Produkt-Repo ist absichtlich getrennt vom bestehenden Avvokado-Quell- und Verzeichnissystem.
+- Das interne Entwicklungs- und Quellsystem bleibt privat und ist nicht Teil dieses oeffentlichen Repos.
 
 ## Produktkontext
 
@@ -56,7 +61,8 @@ Voraussetzungen:
 Setup:
 
 ```bash
-cd C:\codex-local\swiss-lawyers-mcp
+git clone https://github.com/avvokado/swiss-lawyers-mcp.git
+cd swiss-lawyers-mcp
 copy .env.example .env
 npm install
 ```
@@ -75,12 +81,24 @@ Der MCP-Endpoint laeuft dann standardmaessig unter:
 http://127.0.0.1:8080/mcp
 ```
 
+Live MCP URL:
+
+```text
+https://mcp.avvokado.ch/mcp
+```
+
 For production usage, run behind a reverse proxy with rate limiting.
 
 Health-Check:
 
 ```text
 http://127.0.0.1:8080/health
+```
+
+Live Health-Check:
+
+```text
+https://mcp.avvokado.ch/health
 ```
 
 stdio-Server:
@@ -226,6 +244,12 @@ Abgedeckt sind:
 - keine Embeddings
 - keine bezahlte Priorisierung
 - keine Partner-/White-Label-Features im Runtime-Pfad
+
+## Repo-Einordnung
+
+- `swiss-lawyers-mcp` ist das oeffentliche Produkt-Repo fuer Distribution, Integrationen und Dokumentation.
+- Das interne Avvokado-Entwicklungs-Repo bleibt getrennt und privat.
+- Live-Daten, interne Provider, Betriebsdaten und internes Admin-/Ops-Handling gehoeren nicht in dieses oeffentliche Repo.
 
 ## Naechste sinnvolle Erweiterungen
 
