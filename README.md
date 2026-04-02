@@ -212,6 +212,27 @@ Weitere Response-Beispiele stehen in [docs/examples.md](/C:/codex-local/swiss-la
 4. Optional stdio lokal starten:
    - `npm run dev:stdio`
 
+## Live Smoke
+
+Pflicht-Checks fuer den oeffentlichen Betrieb:
+
+1. Health:
+   - `https://mcp.avvokado.ch/health`
+2. Oeffentlicher MCP-Endpoint:
+   - `https://mcp.avvokado.ch/mcp`
+3. Smoke-Client gegen die Live-URL:
+
+```bash
+npm run build
+MCP_URL=https://mcp.avvokado.ch/mcp node dist/scripts/http-smoke.js
+```
+
+Der minimale Betriebscheck ist:
+- `/health` antwortet mit `200`
+- `find_lawyer` liefert Ergebnisse
+- `get_lawyer_profile` liefert ein Profil
+- invalides Input liefert stabil `INVALID_INPUT`
+
 ## Tests
 
 Automatisierte Checks:
