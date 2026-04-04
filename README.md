@@ -1,60 +1,103 @@
 # swiss-lawyers-mcp by avvokado.ch
 
-Ein leichtgewichtiges, oeffentlich ausrichtbares MCP-MVP fuer die Discovery von Anwaeltinnen und Anwaelten in der Schweiz.
+The public MCP for Swiss lawyer discovery, built for AI assistants, marketing-driven discovery flows, directory integrations, and partner ecosystems.
 
-Oeffentliches Produkt-Repo:
-- `https://github.com/avvokado/swiss-lawyers-mcp`
+`swiss-lawyers-mcp by avvokado.ch` helps AI systems find relevant lawyers in Switzerland through a simple, read-only MCP interface. Instead of relying on inconsistent web search results, clients can access structured lawyer profiles, specialties, locations, and languages through a public endpoint designed for discoverability and business use.
 
-Das Projekt ist bewusst AI-first gedacht:
-- ein Haupttool fuer Discovery
-- ein Detailtool fuer Profile
-- read-only
-- Seed-Daten statt Live-Anbindung
-- saubere Trennung fuer spaetere echte Provider, API- und Partner-Erweiterungen
+[Visit avvokado.ch](https://avvokado.ch)  
+[Explore the public repo](https://github.com/avvokado/swiss-lawyers-mcp)  
+[Open the live MCP endpoint](https://mcp.avvokado.ch/mcp)
 
-Wichtig:
-- Das oeffentliche MCP-Produkt-Repo ist absichtlich getrennt vom bestehenden Avvokado-Quell- und Verzeichnissystem.
-- Das interne Entwicklungs- und Quellsystem bleibt privat und ist nicht Teil dieses oeffentlichen Repos.
+## Warum das relevant ist
 
-## Produktkontext
+AI discovery is becoming a real acquisition and visibility channel. If law firms, legal directories, and partner platforms want to be found by AI assistants, they need a structured interface instead of hoping that generic search results happen to work.
 
-Ziel ist ein frueh live gehender MCP-Server fuer `Swiss Lawyer Discovery`.
-Der MVP optimiert auf:
-- schneller Marktstart
-- extrem einfache AI-Integration
-- nachvollziehbare Suchlogik
-- saubere Basis fuer spaetere Live-Daten und Produktisierung
+`swiss-lawyers-mcp by avvokado.ch` is built to make Swiss lawyer discovery easier for:
+- AI assistants
+- discovery connectors
+- legal directories
+- partner ecosystems
+- marketing and growth teams that want better visibility in AI-driven journeys
 
-Nicht Teil des MVP:
-- Auth
-- Rate Limiting
-- Lead-Submission
-- Kontaktanfragen
-- Schreiboperationen
-- Vektorindex
-- Embeddings
-- LLM-Abhaengigkeit im Backend
+It gives clients a clear way to search by natural language, location, specialty, and language, while keeping the product surface intentionally simple.
 
-## Features
+## Für wen das ist
 
-- TypeScript + Node.js 20+
-- MCP mit `stdio` und HTTP
-- genau zwei oeffentliche Tools:
-  - `find_lawyer`
-  - `get_lawyer_profile`
-- gemeinsame Domain- und Tool-Logik fuer beide Transporte
-- transparenter Hybrid-Search-Ansatz:
-  - Freitext
-  - optionale Filter
-  - additive Scores
-  - Soft-Boosts
-  - Fallback-Logik
-- realistische Seed-Daten fuer mehrere Schweizer Kantone und Sprachen
-- automatisierte Tests fuer Search, Validation und Transport-Wiring
+This repository is especially relevant for:
+- marketers who want better AI discoverability for legal services
+- platform and partnership teams building discovery integrations
+- growth teams evaluating AI search visibility in Switzerland
+- technical integrators who need a lightweight, read-only MCP endpoint
 
-## Installation
+If your goal is Swiss legal discovery for AI assistants, referral flows, partner platforms, or structured lawyer search, this is the right product surface.
 
-Voraussetzungen:
+## Was das Produkt konkret liefert
+
+`swiss-lawyers-mcp by avvokado.ch` exposes exactly two public tools:
+
+### `find_lawyer`
+
+The main discovery tool. It allows AI systems to find lawyers in Switzerland using natural language plus optional filters.
+
+Business value:
+- better matching for lawyer discovery
+- cleaner AI assistant responses
+- stronger visibility for structured legal profiles
+
+### `get_lawyer_profile`
+
+The detail tool. It loads the fuller profile for a specific lawyer after discovery.
+
+Business value:
+- richer legal profile retrieval
+- cleaner follow-up responses from AI assistants
+- better handoff from search result to profile detail
+
+Technically, the product supports MCP over HTTP and stdio and is intentionally read-only.
+
+## Business Use Cases
+
+Typical use cases include:
+- AI assistant lawyer discovery in Switzerland
+- legal directory augmentation
+- referral and partner discovery
+- Swiss market visibility for structured legal profiles
+- AI-ready legal search for websites, assistants, and partner tools
+
+This is not a generic legal CRM or lead-routing product. It is a focused discovery layer for Swiss lawyer search and profile retrieval.
+
+## Warum avvokado.ch
+
+[avvokado.ch](https://avvokado.ch) stands behind this public MCP product and the broader Swiss legal directory vision around discoverability, structured profiles, and AI-ready distribution.
+
+If you want to understand the broader context, evaluate a partnership angle, or review the business-facing positioning, start here:
+- [avvokado.ch](https://avvokado.ch)
+- [Public MCP repository](https://github.com/avvokado/swiss-lawyers-mcp)
+- [Live MCP endpoint](https://mcp.avvokado.ch/mcp)
+
+## Live Access
+
+Public MCP URL:
+
+```text
+https://mcp.avvokado.ch/mcp
+```
+
+Health URL:
+
+```text
+https://mcp.avvokado.ch/health
+```
+
+Public repository:
+
+```text
+https://github.com/avvokado/swiss-lawyers-mcp
+```
+
+## Quick Start for Integrators
+
+Prerequisites:
 - Node.js 20+
 - npm 10+
 
@@ -67,83 +110,44 @@ copy .env.example .env
 npm install
 ```
 
-## Lokaler Start
-
-HTTP-Server:
+Local HTTP start:
 
 ```bash
 npm run dev
 ```
 
-Der MCP-Endpoint laeuft dann standardmaessig unter:
+Local MCP endpoint:
 
 ```text
 http://127.0.0.1:8080/mcp
 ```
 
-Live MCP URL:
-
-```text
-https://mcp.avvokado.ch/mcp
-```
-
-For production usage, run behind a reverse proxy with rate limiting.
-
-Health-Check:
+Local health endpoint:
 
 ```text
 http://127.0.0.1:8080/health
 ```
 
-Live Health-Check:
-
-```text
-https://mcp.avvokado.ch/health
-```
-
-stdio-Server:
-
-```bash
-npm run dev:stdio
-```
-
-Production-nahe Build-Starts:
+Production-style start:
 
 ```bash
 npm run build
 npm start
 ```
 
-Oder fuer stdio:
+stdio start:
 
 ```bash
-npm run build
-npm run start:stdio
+npm run dev:stdio
 ```
 
-## Projektstruktur
+For production usage, run behind a reverse proxy with rate limiting.
 
-```text
-src/
-  config/    Env-Parsing und Defaults
-  data/      Seed-Daten und SeedLawyerRepository
-  domain/    Repository-Vertrag, Mapper, Directory-Service, Domain-Errors
-  search/    Normalisierung, Aliases, Scoring, Fallback-Logik
-  server/    MCP-Factory, HTTP, stdio, App-Context
-  tools/     Schemas, Beschreibungen und Handler
-  types/     oeffentliche DTOs und Metadaten
-scripts/     Smoke-Runner und Test-Runner
-docs/        Architektur und Beispiel-Responses
-```
-
-Kleine Abweichung von der urspruenglichen Skizze:
-- `LawyerDirectoryService` sitzt in `src/domain/`, damit Tool-Handler und Transporte nur die fachliche Oberflaeche nutzen und nicht direkt Search/Repository zusammensetzen muessen.
-
-## Verfuegbare MCP-Tools
+## Tool Reference
 
 ### `find_lawyer`
 
-Zentraler Einstieg fuer Discovery.
+Primary discovery tool for Swiss lawyers.
 
 Input:
 - `query?: string`
@@ -151,11 +155,6 @@ Input:
 - `specialty?: string`
 - `language?: string`
 - `limit?: number`
-
-Beispiele:
-- `query: "arbeitsrecht zuerich englisch"`
-- `query: "immigration geneva"`
-- `specialty: "tax", location: "lugano", language: "english"`
 
 Output:
 - `results`
@@ -165,20 +164,7 @@ Output:
 - `suggestions?`
 - `source`
 
-### `get_lawyer_profile`
-
-Detailansicht fuer einen konkreten Treffer.
-
-Input:
-- `lawyer_id: string`
-
-Output:
-- `profile`
-- `source`
-
-## Beispiel-Aufrufe
-
-Per MCP-Client:
+Example:
 
 ```json
 {
@@ -190,6 +176,19 @@ Per MCP-Client:
 }
 ```
 
+### `get_lawyer_profile`
+
+Detail tool for a specific discovery result.
+
+Input:
+- `lawyer_id: string`
+
+Output:
+- `profile`
+- `source`
+
+Example:
+
 ```json
 {
   "name": "get_lawyer_profile",
@@ -199,62 +198,58 @@ Per MCP-Client:
 }
 ```
 
-Weitere Response-Beispiele stehen in [docs/examples.md](/C:/codex-local/swiss-lawyers-mcp/docs/examples.md).
+More technical examples:
+- [Response examples](./docs/examples.md)
+- [Launch checklist](./docs/launch-checklist.md)
 
-## Manuelle Smoke-Schritte
+## Operational Confidence
 
-1. Dependencies installieren:
-   - `npm install`
-2. HTTP-Server starten:
-   - `npm run dev`
-3. In einem zweiten Terminal den Smoke-Client ausfuehren:
-   - `npm run smoke:http`
-4. Optional stdio lokal starten:
-   - `npm run dev:stdio`
+Minimum public operations check:
+- `https://mcp.avvokado.ch/health` returns `200`
+- `find_lawyer` returns structured results
+- `get_lawyer_profile` returns a profile
+- invalid input returns stable `INVALID_INPUT`
 
-## Tests
+Live smoke command:
 
-Automatisierte Checks:
+```bash
+npm run build
+MCP_URL=https://mcp.avvokado.ch/mcp node dist/scripts/http-smoke.js
+```
+
+Automated tests:
 
 ```bash
 npm test
 ```
 
-Abgedeckt sind:
-- exakte Treffer
-- Query + Filter
-- Sprachsuche
-- Orts-Fallback
-- Specialty-Fallback
-- Ranking-Boosts
-- leere Query-Faelle
-- Profil-Lookup
-- Validation
-- Tool-Registrierung
-- HTTP-Wiring
-- gemeinsamer Factory-Pfad fuer HTTP und stdio
+## Language Coverage
 
-## MVP-Grenzen
+### Français
 
-- Seed-/Mock-Daten statt Live-Provider
-- kein Auth
-- kein Rate Limiting
-- keine Persistenz
-- keine Geo-Distanzlogik
-- keine Embeddings
-- keine bezahlte Priorisierung
-- keine Partner-/White-Label-Features im Runtime-Pfad
+`swiss-lawyers-mcp by avvokado.ch` est un MCP public pour la découverte d'avocats en Suisse via des assistants IA et des intégrations de recherche structurée. Il permet de rechercher des profils d'avocats par requête libre, localisation, spécialité et langue.
 
-## Repo-Einordnung
+[Découvrir avvokado.ch](https://avvokado.ch)
 
-- `swiss-lawyers-mcp` ist das oeffentliche Produkt-Repo fuer Distribution, Integrationen und Dokumentation.
-- Das interne Avvokado-Entwicklungs-Repo bleibt getrennt und privat.
-- Live-Daten, interne Provider, Betriebsdaten und internes Admin-/Ops-Handling gehoeren nicht in dieses oeffentliche Repo.
+### Italiano
 
-## Naechste sinnvolle Erweiterungen
+`swiss-lawyers-mcp by avvokado.ch` è un MCP pubblico per la scoperta di avvocati in Svizzera tramite assistenti AI e integrazioni di ricerca strutturata. Consente di trovare profili legali tramite query libera, località, specializzazione e lingua.
 
-1. Live-Read-Only-Adapter fuer das bestehende Avvokado-Verzeichnis hinter `LawyerRepository`.
-2. Dedizierter Search-Index fuer bessere Recall/Ranking-Qualitaet bei groesseren Datenmengen.
-3. Oeffentliche API- und Hosting-Haertung mit Auth, Rate Limiting und Observability.
-4. Mehrsprachige Synonymik und Query-Normalisierung fuer DE/FR/IT/EN.
-5. Analytics, Query-Logs und kuratierte Relevance-Feedback-Loops.
+[Scopri avvokado.ch](https://avvokado.ch)
+
+### English
+
+`swiss-lawyers-mcp by avvokado.ch` is a public MCP for lawyer discovery in Switzerland. It is designed for AI assistants, directory integrations, and structured legal profile retrieval across specialties, locations, and languages.
+
+[Visit avvokado.ch](https://avvokado.ch)
+
+## About / Contact / CTA
+
+If you want to evaluate Swiss lawyer discovery for AI assistants, legal marketing visibility, partner integrations, or structured legal search, start with:
+
+- [avvokado.ch](https://avvokado.ch)
+- [Public MCP repo](https://github.com/avvokado/swiss-lawyers-mcp)
+- [Live MCP endpoint](https://mcp.avvokado.ch/mcp)
+- [Health endpoint](https://mcp.avvokado.ch/health)
+
+`swiss-lawyers-mcp` is the public product repository for distribution, documentation, and integrations. Internal source systems, private provider adapters, and internal operations remain separate from this public repo.
