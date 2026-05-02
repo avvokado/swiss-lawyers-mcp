@@ -14,11 +14,12 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "check:public": "npm run build && node dist/scripts/check-public-safety.js",
     "dev": "tsx watch src/server/http.ts",
     "dev:stdio": "tsx src/server/stdio.ts",
     "start": "node index.js",
     "start:stdio": "node dist/src/server/stdio.js",
-    "test": "npm run build && node dist/scripts/run-tests.js",
+    "test": "npm run build && node dist/scripts/check-public-safety.js && node dist/scripts/run-tests.js",
     "smoke:http": "npm run build && node dist/scripts/http-smoke.js"
   },
   "keywords": [
